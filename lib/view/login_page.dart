@@ -56,7 +56,7 @@ class _LogInPageState extends State<LogInPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 90, 49, 26), // Warna #F3B664
+        backgroundColor: Color.fromARGB(255, 240, 237, 235), // Warna #F3B664
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
           onPressed: () {
@@ -66,7 +66,7 @@ class _LogInPageState extends State<LogInPage> {
         title: Text('Register'),
       ),
       body: Container(
-        color: Color.fromARGB(255, 122, 82, 46), // Warna #F1EB90
+        color: Color.fromARGB(255, 240, 240, 239), // Warna #F1EB90
         padding: const EdgeInsets.all(20.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -107,7 +107,7 @@ class _LogInPageState extends State<LogInPage> {
                         _navigateToDashboard(context);
                       },
                 style: ElevatedButton.styleFrom(
-                  primary: Color(0xFF9fbb73), // Warna #9FBB73
+                  primary: Color.fromARGB(255, 241, 241, 241), // Warna #9FBB73
                 ),
                 child: _authController.isLoading.value
                     ? CircularProgressIndicator()

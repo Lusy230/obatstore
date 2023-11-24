@@ -44,42 +44,38 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyAzVTUY-Z-3Z0kJmkVf6-Jb8d0yuWeZQtg',
-    appId: '1:323202766982:web:48a841e4fb1fd795779907',
-    messagingSenderId: '323202766982',
-    projectId: 'projectku-aa6e7',
-    authDomain: 'projectku-aa6e7.firebaseapp.com',
-    storageBucket: 'projectku-aa6e7.appspot.com',
-    measurementId: 'G-YC5Y2BBGHM',
+    apiKey: 'AIzaSyAnAmY01BuB-zJmoM-3so-Yp1XYWsXrSsQ',
+    appId: '1:147814267525:web:fdd64b1db6ef47b75dc7ec',
+    messagingSenderId: '147814267525',
+    projectId: 'obatshop-9ee82',
+    authDomain: 'obatshop-9ee82.firebaseapp.com',
+    storageBucket: 'obatshop-9ee82.appspot.com',
+    measurementId: 'G-MZGZVQ7KSB',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyDYjqsO11ReQlXVsXom94tBVMU70YdD56k',
-    appId: '1:323202766982:android:0c7dd47a8d310943779907',
-    messagingSenderId: '323202766982',
-    projectId: 'projectku-aa6e7',
-    storageBucket: 'projectku-aa6e7.appspot.com',
+    apiKey: 'AIzaSyCpFnm6R7Es9HgdQ5Q-qLljOayzywqACVc',
+    appId: '1:147814267525:android:c6935bd35bae6a185dc7ec',
+    messagingSenderId: '147814267525',
+    projectId: 'obatshop-9ee82',
+    storageBucket: 'obatshop-9ee82.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyAuO_iAOpk8z4EROpZN6JsxIMUYwE90mZ4',
-    appId: '1:323202766982:ios:abf33c1d6f678acf779907',
-    messagingSenderId: '323202766982',
-    projectId: 'projectku-aa6e7',
-    storageBucket: 'projectku-aa6e7.appspot.com',
-    iosClientId:
-        '323202766982-4qvp4fr9p8h9aabeuukl916vujo9hlnl.apps.googleusercontent.com',
+    apiKey: 'AIzaSyCnbcqerWJMD3OradALJDe31y1H3xqk334',
+    appId: '1:147814267525:ios:bf952402e4bf9b705dc7ec',
+    messagingSenderId: '147814267525',
+    projectId: 'obatshop-9ee82',
+    storageBucket: 'obatshop-9ee82.appspot.com',
     iosBundleId: 'com.example.apotek',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyAuO_iAOpk8z4EROpZN6JsxIMUYwE90mZ4',
-    appId: '1:323202766982:ios:102806020aa6d8fb779907',
-    messagingSenderId: '323202766982',
-    projectId: 'projectku-aa6e7',
-    storageBucket: 'projectku-aa6e7.appspot.com',
-    iosClientId:
-        '323202766982-osj7ivfou4aluirjnkbpsl2f5q0kapge.apps.googleusercontent.com',
+    apiKey: 'AIzaSyCnbcqerWJMD3OradALJDe31y1H3xqk334',
+    appId: '1:147814267525:ios:90e128c8a375c5fb5dc7ec',
+    messagingSenderId: '147814267525',
+    projectId: 'obatshop-9ee82',
+    storageBucket: 'obatshop-9ee82.appspot.com',
     iosBundleId: 'com.example.apotek.RunnerTests',
   );
 }

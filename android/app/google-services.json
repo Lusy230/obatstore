@@ -1,115 +1,26 @@
 {
   "project_info": {
-    "project_number": "323202766982",
-    "project_id": "projectku-aa6e7",
-    "storage_bucket": "projectku-aa6e7.appspot.com"
+    "project_number": "147814267525",
+    "project_id": "obatshop-9ee82",
+    "storage_bucket": "obatshop-9ee82.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:323202766982:android:0c7dd47a8d310943779907",
+        "mobilesdk_app_id": "1:147814267525:android:c6935bd35bae6a185dc7ec",
         "android_client_info": {
           "package_name": "com.example.apotek"
         }
       },
-      "oauth_client": [
-        {
-          "client_id": "323202766982-ssp0rq1otbf3kjndo9a8hduafcvskvr5.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
+      "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyDYjqsO11ReQlXVsXom94tBVMU70YdD56k"
+          "current_key": "AIzaSyCpFnm6R7Es9HgdQ5Q-qLljOayzywqACVc"
         }
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "323202766982-ssp0rq1otbf3kjndo9a8hduafcvskvr5.apps.googleusercontent.com",
-              "client_type": 3
-            },
-            {
-              "client_id": "323202766982-4qvp4fr9p8h9aabeuukl916vujo9hlnl.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "com.example.apotek"
-              }
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:323202766982:android:0fdc39c5eff72d74779907",
-        "android_client_info": {
-          "package_name": "com.example.demo_app"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "323202766982-ssp0rq1otbf3kjndo9a8hduafcvskvr5.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyDYjqsO11ReQlXVsXom94tBVMU70YdD56k"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "323202766982-ssp0rq1otbf3kjndo9a8hduafcvskvr5.apps.googleusercontent.com",
-              "client_type": 3
-            },
-            {
-              "client_id": "323202766982-4qvp4fr9p8h9aabeuukl916vujo9hlnl.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "com.example.apotek"
-              }
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:323202766982:android:6968c9579f82e508779907",
-        "android_client_info": {
-          "package_name": "com.example.project"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "323202766982-ssp0rq1otbf3kjndo9a8hduafcvskvr5.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyDYjqsO11ReQlXVsXom94tBVMU70YdD56k"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "323202766982-ssp0rq1otbf3kjndo9a8hduafcvskvr5.apps.googleusercontent.com",
-              "client_type": 3
-            },
-            {
-              "client_id": "323202766982-4qvp4fr9p8h9aabeuukl916vujo9hlnl.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "com.example.apotek"
-              }
-            }
-          ]
+          "other_platform_oauth_client": []
         }
       }
     }
