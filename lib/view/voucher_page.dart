@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 
 class VoucherPage extends StatelessWidget {
-  final List<String> vouchers = ['Voucher A', 'Voucher B', 'Voucher C', 'Voucher D'];
+  final List<String> vouchers = [
+    'Voucher A',
+    'Voucher B',
+    'Voucher C',
+    'Voucher D'
+  ];
 
   @override
   Widget build(BuildContext context) {

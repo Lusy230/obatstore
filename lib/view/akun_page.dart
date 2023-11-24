@@ -11,7 +11,8 @@ class AkunPage extends StatefulWidget {
 
 class _AkunPageState extends State<AkunPage> {
   File? _image;
-  TextEditingController _nameController = TextEditingController(text: 'John Doe');
+  TextEditingController _nameController =
+      TextEditingController(text: 'John Doe');
   TextEditingController _ageController = TextEditingController(text: '30');
   TextEditingController _genderController =
       TextEditingController(text: 'Laki-laki');

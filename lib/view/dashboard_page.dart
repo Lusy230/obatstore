@@ -48,7 +48,6 @@ class _DashboardPageState extends StatelessWidget {
               );
             },
           ),
-          
         ],
       ),
       backgroundColor: Color.fromARGB(255, 28, 118, 143),
@@ -91,10 +90,11 @@ class _DashboardPageState extends StatelessWidget {
         children: [
           Align(
             alignment: Alignment.topLeft,
-            child:Padding(
+            child: Padding(
               padding: const EdgeInsets.all(16.0),
-              child:Text('Welcome to Dashboard!',
-              style: TextStyle(fontSize: 20),
+              child: Text(
+                'Welcome to Dashboard!',
+                style: TextStyle(fontSize: 20),
               ),
             ),
           ),
@@ -125,7 +125,7 @@ class _DashboardPageState extends StatelessWidget {
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: ElevatedButton(
-                  onPressed: () { 
+                  onPressed: () {
                     Navigator.pushNamed(context, '/pembelian');
                   },
                   child: Column(

@@ -67,7 +67,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '323202766982',
     projectId: 'projectku-aa6e7',
     storageBucket: 'projectku-aa6e7.appspot.com',
-    iosClientId: '323202766982-4qvp4fr9p8h9aabeuukl916vujo9hlnl.apps.googleusercontent.com',
+    iosClientId:
+        '323202766982-4qvp4fr9p8h9aabeuukl916vujo9hlnl.apps.googleusercontent.com',
     iosBundleId: 'com.example.apotek',
   );
 
@@ -77,7 +78,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '323202766982',
     projectId: 'projectku-aa6e7',
     storageBucket: 'projectku-aa6e7.appspot.com',
-    iosClientId: '323202766982-osj7ivfou4aluirjnkbpsl2f5q0kapge.apps.googleusercontent.com',
+    iosClientId:
+        '323202766982-osj7ivfou4aluirjnkbpsl2f5q0kapge.apps.googleusercontent.com',
     iosBundleId: 'com.example.apotek.RunnerTests',
   );
 }

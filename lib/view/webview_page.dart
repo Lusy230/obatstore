@@ -4,24 +4,27 @@ import 'package:webview_flutter/webview_flutter.dart';
 class WebView extends StatefulWidget {
   const WebView({super.key});
 
-   @override
+  @override
   State<WebView> createState() => _WebViewState();
 }
 
-class _WebViewState extends State<WebView> {late final WebViewController controller;
-@override
+class _WebViewState extends State<WebView> {
+  late final WebViewController controller;
+  @override
   void initState() {
     super.initState();
     controller = WebViewController()
       ..setNavigationDelegate(NavigationDelegate(
-        /// Previous code
-      ))
+
+          /// Previous code
+          ))
       ..setJavaScriptMode(JavaScriptMode.unrestricted)
       ..loadRequest(
         Uri.parse('https://instagram.com/eunwo.o_c?igshid=OGQ5ZDc2ODk2ZA=='),
       );
-}
-@override
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -30,8 +33,6 @@ class _WebViewState extends State<WebView> {late final WebViewController control
       body: WebViewWidget(
         controller: controller,
       ),
-);
+    );
+  }
 }
-}
-
-
