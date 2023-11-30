@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:apotek/controller/databasecontroller.dart';
 
 class VoucherPage extends StatelessWidget {
-  final List<String> vouchers = [
-    'Voucher A',
-    'Voucher B',
-    'Voucher C',
-    'Voucher D'
-  ];
+  final TextEditingController nameController = TextEditingController();
+  final DatabaseController databaseController = DatabaseController();
 
   @override
   Widget build(BuildContext context) {
@@ -20,20 +17,48 @@ class VoucherPage extends StatelessWidget {
         ),
         title: Text('Voucher'),
       ),
-      body: ListView.builder(
-        itemCount: vouchers.length,
-        itemBuilder: (BuildContext context, int index) {
-          return ListTile(
-            title: Text(vouchers[index]),
-            trailing: ElevatedButton(
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            TextField(
+              controller: nameController,
+              decoration: InputDecoration(labelText: 'Masukkan Nama Voucher'),
+            ),
+            SizedBox(height: 20),
+            ElevatedButton(
               onPressed: () {
-                // Implementasi penggunaan voucher
+                _submitVoucher(context);
               },
               child: Text('Gunakan'),
             ),
-          );
-        },
+          ],
+        ),
       ),
     );
+  }
+
+  void _submitVoucher(BuildContext context) {
+    String voucherName = nameController.text.trim();
+
+    if (voucherName.isNotEmpty) {
+      // Store voucher name in the database
+      databaseController.createDocument(voucherName);
+
+      // Show success message or navigate to another page if needed
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Voucher submitted successfully!'),
+        ),
+      );
+    } else {
+      // Show an error if the voucher name is empty
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Nama Voucher tidak boleh kosong!'),
+        ),
+      );
+    }
   }
 }
