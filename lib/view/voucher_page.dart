@@ -1,8 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:apotek/controller/databasecontroller.dart';
 
-class VoucherPage extends StatelessWidget {
+class VoucherPage extends StatefulWidget {
+  @override
+  _VoucherPageState createState() => _VoucherPageState();
+}
+
+class _VoucherPageState extends State<VoucherPage> {
   final TextEditingController nameController = TextEditingController();
+  final TextEditingController updateController = TextEditingController();
+
   final DatabaseController databaseController = DatabaseController();
 
   @override
@@ -33,6 +40,37 @@ class VoucherPage extends StatelessWidget {
               },
               child: Text('Gunakan'),
             ),
+            SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () {
+                _readVoucher(context);
+              },
+              child: Text('Baca Voucher'),
+            ),
+            SizedBox(height: 20),
+            Row(
+              children: [
+                Expanded(
+                  child: TextField(
+                    controller: updateController,
+                    decoration: InputDecoration(labelText: 'Nilai Diskon Baru'),
+                  ),
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    _updateVoucher(context);
+                  },
+                  child: Text('Perbarui Voucher'),
+                ),
+              ],
+            ),
+            SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () {
+                _deleteVoucher(context);
+              },
+              child: Text('Hapus Voucher'),
+            ),
           ],
         ),
       ),
@@ -49,7 +87,7 @@ class VoucherPage extends StatelessWidget {
       // Show success message or navigate to another page if needed
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text('Voucher submitted successfully!'),
+          content: Text('Voucher "$voucherName" berhasil digunakan!'),
         ),
       );
     } else {
@@ -57,6 +95,67 @@ class VoucherPage extends StatelessWidget {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text('Nama Voucher tidak boleh kosong!'),
+        ),
+      );
+    }
+  }
+
+  void _readVoucher(BuildContext context) async {
+    // Read voucher from the database
+    String documentId = '65708204c0f192a6e53c'; // Replace with the actual documentId
+    try {
+      Map<String, dynamic> voucher = await databaseController.readDocument(documentId);
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Voucher: $voucher'),
+        ),
+      );
+    } catch (e) {
+      // Handle error, e.g., document not found
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Error: Voucher tidak ditemukan.'),
+        ),
+      );
+    }
+  }
+
+  void _updateVoucher(BuildContext context) async {
+    String documentId = '65708204c0f192a6e53c'; // Replace with the actual documentId
+    String newDiskon = updateController.text.trim();
+
+    try {
+      await databaseController.updateDocument(documentId, newDiskon);
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Voucher berhasil diperbarui!'),
+        ),
+      );
+    } catch (e) {
+      // Handle error, e.g., document not found
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Error: Voucher tidak ditemukan.'),
+        ),
+      );
+    }
+  }
+
+  void _deleteVoucher(BuildContext context) async {
+    String documentId = '65708204c0f192a6e53c'; // Replace with the actual documentId
+
+    try {
+      await databaseController.deleteDocument(documentId);
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Voucher berhasil dihapus!'),
+        ),
+      );
+    } catch (e) {
+      // Handle error, e.g., document not found
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Error: Voucher tidak ditemukan.'),
         ),
       );
     }
