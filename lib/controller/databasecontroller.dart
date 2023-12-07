@@ -34,13 +34,16 @@ class DatabaseController extends ClientController {
     final response = await databases.getDocument(
       databaseId: 'obatshop',
       collectionId: 'obatshop',
-      documentId: '65708204c0f192a6e53c',
+      documentId: '65719ab543096ee2bb28',
     );
 
     print('Document read: ${response.data}');
 
     return response.data;
   }
+
+  
+  
 
   Future<void> updateDocument(String documentId, String newDiskon) async {
     final client = Client()
@@ -52,7 +55,7 @@ class DatabaseController extends ClientController {
     final response = await databases.updateDocument(
       databaseId: 'obatshop',
       collectionId: 'obatshop',
-      documentId: '65708204c0f192a6e53c',
+      documentId: '65719c0b46595cf34f38',
       data: {
         'diskon': newDiskon,
       },
@@ -71,7 +74,7 @@ class DatabaseController extends ClientController {
     final response = await databases.deleteDocument(
       databaseId: 'obatshop',
       collectionId: 'obatshop',
-      documentId: '65708204c0f192a6e53c',
+      documentId: '65719c0b46595cf34f38',
     );
 
     print('Document deleted: ${response.data}');

@@ -101,27 +101,41 @@ class _VoucherPageState extends State<VoucherPage> {
   }
 
   void _readVoucher(BuildContext context) async {
-    // Read voucher from the database
-    String documentId = '65708204c0f192a6e53c'; // Replace with the actual documentId
-    try {
-      Map<String, dynamic> voucher = await databaseController.readDocument(documentId);
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
+  // Read voucher from the database
+  String documentId = '65719ab543096ee2bb28'; // Replace with the actual documentId
+  try {
+    Map<String, dynamic> voucher = await databaseController.readDocument(documentId);
+
+    // Display voucher data in a pop-up
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Voucher Information'),
           content: Text('Voucher: $voucher'),
-        ),
-      );
-    } catch (e) {
-      // Handle error, e.g., document not found
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text('Error: Voucher tidak ditemukan.'),
-        ),
-      );
-    }
+          actions: [
+            ElevatedButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: Text('Close'),
+            ),
+          ],
+        );
+      },
+    );
+  } catch (e) {
+    // Handle error, e.g., document not found
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text('Error: Voucher tidak ditemukan.'),
+      ),
+    );
   }
+}
 
   void _updateVoucher(BuildContext context) async {
-    String documentId = '65708204c0f192a6e53c'; // Replace with the actual documentId
+    String documentId = '65719c0b46595cf34f38'; // Replace with the actual documentId
     String newDiskon = updateController.text.trim();
 
     try {
@@ -142,7 +156,7 @@ class _VoucherPageState extends State<VoucherPage> {
   }
 
   void _deleteVoucher(BuildContext context) async {
-    String documentId = '65708204c0f192a6e53c'; // Replace with the actual documentId
+    String documentId = '65719c0b46595cf34f38'; // Replace with the actual documentId
 
     try {
       await databaseController.deleteDocument(documentId);
@@ -152,10 +166,9 @@ class _VoucherPageState extends State<VoucherPage> {
         ),
       );
     } catch (e) {
-      // Handle error, e.g., document not found
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text('Error: Voucher tidak ditemukan.'),
+          content: Text('Voucher berhasil dihapus!'),
         ),
       );
     }
