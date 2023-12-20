@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:apotek/controller/databasecontroller.dart';
+import 'package:get/get.dart';
 
 class VoucherPage extends StatefulWidget {
   @override
@@ -9,8 +10,8 @@ class VoucherPage extends StatefulWidget {
 class _VoucherPageState extends State<VoucherPage> {
   final TextEditingController nameController = TextEditingController();
   final TextEditingController updateController = TextEditingController();
-
   final DatabaseController databaseController = DatabaseController();
+
 
   @override
   Widget build(BuildContext context) {
@@ -58,7 +59,7 @@ class _VoucherPageState extends State<VoucherPage> {
                 ),
                 ElevatedButton(
                   onPressed: () {
-                    _updateVoucher(context);
+                    // _updateVoucher(context);
                   },
                   child: Text('Perbarui Voucher'),
                 ),
@@ -67,7 +68,7 @@ class _VoucherPageState extends State<VoucherPage> {
             SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
-                _deleteVoucher(context);
+                // _deleteVoucher(context);
               },
               child: Text('Hapus Voucher'),
             ),
@@ -78,31 +79,31 @@ class _VoucherPageState extends State<VoucherPage> {
   }
 
   void _submitVoucher(BuildContext context) {
-    String voucherName = nameController.text.trim();
+  String voucherName = nameController.text.trim();
 
-    if (voucherName.isNotEmpty) {
-      // Store voucher name in the database
-      databaseController.createDocument(voucherName);
+  if (voucherName.isNotEmpty) {
+    // Store voucher name in the database
+    databaseController.createDocument(voucherName);
 
-      // Show success message or navigate to another page if needed
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text('Voucher "$voucherName" berhasil digunakan!'),
-        ),
-      );
-    } else {
-      // Show an error if the voucher name is empty
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text('Nama Voucher tidak boleh kosong!'),
-        ),
-      );
-    }
+    // Show success message or navigate to another page if needed
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text('Voucher "$voucherName" berhasil digunakan!'),
+      ),
+    );
+  } else {
+    // Show an error if the voucher name is empty
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text('Nama Voucher tidak boleh kosong!'),
+      ),
+    );
   }
+}
 
-  void _readVoucher(BuildContext context) async {
+void _readVoucher(BuildContext context) async {
   // Read voucher from the database
-  String documentId = '65719ab543096ee2bb28'; // Replace with the actual documentId
+  String documentId = 'obatshop'; // Replace with the actual documentId
   try {
     Map<String, dynamic> voucher = await databaseController.readDocument(documentId);
 
@@ -112,7 +113,7 @@ class _VoucherPageState extends State<VoucherPage> {
       builder: (BuildContext context) {
         return AlertDialog(
           title: Text('Voucher Information'),
-          content: Text('Voucher: $voucher'),
+          content: Text('Voucher: ${voucher['voucherName']}'),
           actions: [
             ElevatedButton(
               onPressed: () {
@@ -134,43 +135,51 @@ class _VoucherPageState extends State<VoucherPage> {
   }
 }
 
-  void _updateVoucher(BuildContext context) async {
-    String documentId = '65719c0b46595cf34f38'; // Replace with the actual documentId
-    String newDiskon = updateController.text.trim();
+void _updateReview(Map<String, dynamic> review) {
+  String documentId = review['\$id'];
+  _updateVoucher(context, documentId);
+}
 
-    try {
-      await databaseController.updateDocument(documentId, newDiskon);
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text('Voucher berhasil diperbarui!'),
-        ),
-      );
-    } catch (e) {
-      // Handle error, e.g., document not found
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text('Error: Voucher tidak ditemukan.'),
-        ),
-      );
-    }
+void _updateVoucher(BuildContext context, String documentId) async {
+  String newDiskon = updateController.text.trim();
+
+  try {
+    await databaseController.updateDocument(documentId, newDiskon);
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text('Voucher berhasil diperbarui!'),
+      ),
+    );
+  } catch (e) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text('Gagal memperbarui voucher. Error: $e'),
+      ),
+    );
   }
+}
 
-  void _deleteVoucher(BuildContext context) async {
-    String documentId = '65719c0b46595cf34f38'; // Replace with the actual documentId
 
-    try {
-      await databaseController.deleteDocument(documentId);
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text('Voucher berhasil dihapus!'),
-        ),
-      );
-    } catch (e) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text('Voucher berhasil dihapus!'),
-        ),
-      );
-    }
+void _deleteReview(Map<String, dynamic> review) {
+  String documentId = review['\$id'];
+  _deleteVoucher(context, documentId);
+}
+
+void _deleteVoucher(BuildContext context, String documentId) async {
+  try {
+    await databaseController.deleteDocument(documentId);
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text('Voucher berhasil dihapus!'),
+      ),
+    );
+  } catch (e) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text('Gagal menghapus voucher. Error: $e'),
+      ),
+    );
   }
+}
+
 }

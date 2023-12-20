@@ -1,82 +1,101 @@
 import 'package:apotek/controller/clientcontroller.dart';
 import 'package:appwrite/appwrite.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class DatabaseController extends ClientController {
-  final String databaseId = 'obatshop';
-  final String collectionId = 'obatshop';
+  @override
+  void onInit() {
+    super.onInit();
+    // appwrite initialization
+  }
 
-  Future<void> createDocument(String diskon) async {
-    final client = Client()
-        .setEndpoint('https://cloud.appwrite.io/v1')
-        .setProject('656832c23f32454e9069');
-
-    final databases = Databases(client);
-
-    final response = await databases.createDocument(
-      databaseId: 'obatshop',
-      collectionId: 'obatshop',
-      data: {
-        'diskon': diskon,
-      },
-      documentId: '',
-    );
-
-    print('Document created: ${response.data}');
+  Future<void> createDocument(String voucherName) async {
+    try {
+      final result = await databases.createDocument(
+        databaseId: '657b1c8f90ae0db4594d',
+        documentId: ID.unique(),
+        collectionId: '657b1ca93c2acbd9022d',
+        data: {'voucherName': voucherName},
+        permissions: [
+          Permission.read(Role.any()),
+          Permission.update(Role.any()),
+          Permission.delete(Role.any()),
+        ],
+      );
+      print("DatabaseController:: createDocument $result");
+    } catch (error) {
+      Get.defaultDialog(
+        title: "Error Database",
+        titlePadding: const EdgeInsets.only(top: 15, bottom: 5),
+        titleStyle: Get.context?.theme.textTheme.titleLarge,
+        content: Text(
+          "Error storing voucher data: $error",
+          style: Get.context?.theme.textTheme.bodyMedium,
+          textAlign: TextAlign.center,
+        ),
+        contentPadding: const EdgeInsets.only(top: 5, left: 15, right: 15),
+      );
+    }
   }
 
   Future<Map<String, dynamic>> readDocument(String documentId) async {
-    final client = Client()
-        .setEndpoint('https://cloud.appwrite.io/v1')
-        .setProject('656832c23f32454e9069');
-
-    final databases = Databases(client);
-
-    final response = await databases.getDocument(
-      databaseId: 'obatshop',
-      collectionId: 'obatshop',
-      documentId: '65719ab543096ee2bb28',
-    );
-
-    print('Document read: ${response.data}');
-
-    return response.data;
+    try {
+      final response = await databases.getDocument(
+        databaseId: '657b1c8f90ae0db4594d',
+        documentId: documentId,
+        collectionId: '657b1ca93c2acbd9022d',
+      );
+      return response.data;
+    } catch (error) {
+      throw Exception('Error fetching voucher data: $error');
+    }
   }
 
-  
-  
-
   Future<void> updateDocument(String documentId, String newDiskon) async {
-    final client = Client()
-        .setEndpoint('https://cloud.appwrite.io/v1')
-        .setProject('656832c23f32454e9069');
-
-    final databases = Databases(client);
-
-    final response = await databases.updateDocument(
-      databaseId: 'obatshop',
-      collectionId: 'obatshop',
-      documentId: '65719c0b46595cf34f38',
-      data: {
-        'diskon': newDiskon,
-      },
-    );
-
-    print('Document updated: ${response.data}');
+    try {
+      final result = await databases.updateDocument(
+        databaseId: '657b1c8f90ae0db4594d',
+        documentId: documentId,
+        data: {'newDiskon': newDiskon},
+        collectionId: '657b1ca93c2acbd9022d',
+      );
+      print("DatabaseController:: updateDocument $result");
+    } catch (error) {
+      Get.defaultDialog(
+        title: "Error Database",
+        titlePadding: const EdgeInsets.only(top: 15, bottom: 5),
+        titleStyle: Get.context?.theme.textTheme.titleLarge,
+        content: Text(
+          "Error updating voucher data: $error",
+          style: Get.context?.theme.textTheme.bodyMedium,
+          textAlign: TextAlign.center,
+        ),
+        contentPadding: const EdgeInsets.only(top: 5, left: 15, right: 15),
+      );
+    }
   }
 
   Future<void> deleteDocument(String documentId) async {
-    final client = Client()
-        .setEndpoint('https://cloud.appwrite.io/v1')
-        .setProject('656832c23f32454e9069');
-
-    final databases = Databases(client);
-
-    final response = await databases.deleteDocument(
-      databaseId: 'obatshop',
-      collectionId: 'obatshop',
-      documentId: '65719c0b46595cf34f38',
-    );
-
-    print('Document deleted: ${response.data}');
+    try {
+      final result = await databases.deleteDocument(
+        databaseId: '657b1c8f90ae0db4594d',
+        documentId: documentId,
+        collectionId: '657b1ca93c2acbd9022d',
+      );
+      print("DatabaseController:: deleteDocument $result");
+    } catch (error) {
+      Get.defaultDialog(
+        title: "Error Database",
+        titlePadding: const EdgeInsets.only(top: 15, bottom: 5),
+        titleStyle: Get.context?.theme.textTheme.titleLarge,
+        content: Text(
+          "Error deleting voucher data: $error",
+          style: Get.context?.theme.textTheme.bodyMedium,
+          textAlign: TextAlign.center,
+        ),
+        contentPadding: const EdgeInsets.only(top: 5, left: 15, right: 15),
+      );
+    }
   }
 }
